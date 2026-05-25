@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build main cpp",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "if (!(Test-Path \"${workspaceFolder}\\build\")) { New-Item -ItemType Directory -Path \"${workspaceFolder}\\build\" | Out-Null }; g++ -g -O0 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\main.cpp\" -o \"${workspaceFolder}\\build\\main.o\"; g++ -g -O0 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\database\\Database.cpp\" -o \"${workspaceFolder}\\build\\Database.o\"; g++ -g -O0 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\ApartmentRepository.cpp\" -o \"${workspaceFolder}\\build\\ApartmentRepository.o\"; g++ -g -O0 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\ResidentRepository.cpp\" -o \"${workspaceFolder}\\build\\ResidentRepository.o\"; g++ -g -O0 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\BillRepository.cpp\" -o \"${workspaceFolder}\\build\\BillRepository.o\"; gcc -g -O0 -std=c99 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\sqlite3.c\" -o \"${workspaceFolder}\\build\\sqlite3.o\"; g++ -g -O0 \"${workspaceFolder}\\build\\main.o\" \"${workspaceFolder}\\build\\Database.o\" \"${workspaceFolder}\\build\\ApartmentRepository.o\" \"${workspaceFolder}\\build\\ResidentRepository.o\" \"${workspaceFolder}\\build\\BillRepository.o\" \"${workspaceFolder}\\build\\sqlite3.o\" -o \"${workspaceFolder}\\build\\main.exe\""
+      ],
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build main cpp release",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "if (!(Test-Path \"${workspaceFolder}\\build\")) { New-Item -ItemType Directory -Path \"${workspaceFolder}\\build\" | Out-Null }; g++ -O2 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\main.cpp\" -o \"${workspaceFolder}\\build\\main.o\"; g++ -O2 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\database\\Database.cpp\" -o \"${workspaceFolder}\\build\\Database.o\"; g++ -O2 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\ApartmentRepository.cpp\" -o \"${workspaceFolder}\\build\\ApartmentRepository.o\"; g++ -O2 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\ResidentRepository.cpp\" -o \"${workspaceFolder}\\build\\ResidentRepository.o\"; g++ -O2 -std=c++17 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\repositories\\BillRepository.cpp\" -o \"${workspaceFolder}\\build\\BillRepository.o\"; gcc -O2 -std=c99 -I\"${workspaceFolder}\" -c \"${workspaceFolder}\\sqlite3.c\" -o \"${workspaceFolder}\\build\\sqlite3.o\"; g++ -O2 \"${workspaceFolder}\\build\\main.o\" \"${workspaceFolder}\\build\\Database.o\" \"${workspaceFolder}\\build\\ApartmentRepository.o\" \"${workspaceFolder}\\build\\ResidentRepository.o\" \"${workspaceFolder}\\build\\BillRepository.o\" \"${workspaceFolder}\\build\\sqlite3.o\" -o \"${workspaceFolder}\\build\\main.exe\""
+      ],
+      "problemMatcher": "$gcc"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Tren cmd
+
+B1: cd /d E:\project_oop
+
+B2: gcc -c sqlite3.c -o sqlite3.o
+
+B3: 
+g++ main.cpp ^
+database/Database.cpp ^
+repositories/ApartmentRepository.cpp ^
+repositories/BillRepository.cpp ^
+repositories/ResidentRepository.cpp ^
+sqlite3.o -I. -o main.exe
+
+B4: 
+main.exe
